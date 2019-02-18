@@ -25,11 +25,33 @@ complex::complex(const float im, const float re) :
 	im(re)
 {}
 
+float complex::module()
+{
+	return sqrt(re*re + im*im);
+}
+
+float complex::argument()
+{
+	if (this->re > 0) return atan(this->im / this->re);
+	if (this->re < 0 && this->im >= 0) return pi + atan(this->im / this->re);
+	if (this->re < 0 && this->im < 0) return -pi + atan(this->im / this->re);
+	if (this->re = 0 && this->im > 0) return pi / 2;
+	if (this->re = 0 && this->im < 0) return -pi / 2;
+}
+
+type complex::imaginary()
+{
+	return type(im);
+}
+
+type complex::real()
+{
+	return type(re);
+}
+
 const bool operator== (const complex & x, const complex & y)
 {
-	if (x.re == y.re && x.im == y.im)
-		return true;
-	return false;
+	return x.re == y.re && x.im == y.im;
 }
 
 const bool operator!=(const complex & x, const complex & y)

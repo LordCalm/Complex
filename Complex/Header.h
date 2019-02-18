@@ -1,8 +1,11 @@
 #pragma once
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 typedef float type;
+
+const double pi = 3.1415926535897932384626433832795;
 
 class complex {
 private:
@@ -21,4 +24,10 @@ public:
 	friend complex operator- (const complex & x, const complex & y);
 	friend complex operator* (const complex & x, const complex & y);
 	friend complex operator/ (const complex & x, const complex & y);
+
+	float module();
+	float argument();
+	type imaginary();
+	type real();
+
 };
