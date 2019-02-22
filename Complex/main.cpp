@@ -2,10 +2,17 @@
 
 int main()
 {
-	complex z1(2, 5);
-	complex z2(3, -2);
-	if (z2 == 1) cout << "Yes!" << endl;
-	cout << z1 / z2 << endl;
-	cout << z1 * 2 << endl;
+	complex a, b(2.0), c(1.0, 1.0);
+
+	cin >> a;
+	cout << a << ", " << b << ", abs: " << b.abs() << endl;
+
+	a = b + c.conj();
+	a = a * complex(2.0);
+	a += c;
+	c = a + 2 * b;
+
+	cout << a << ", " << c << endl;
+
 	return 0;
 }
