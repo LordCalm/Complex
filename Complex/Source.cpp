@@ -7,8 +7,8 @@ Complex::Complex() :
 {}
 
 Complex::Complex(float re, float im) :
-	re(im),
-	im(re),
+	re(re),
+	im(im),
 	form(1)
 {}
 
@@ -74,7 +74,7 @@ ostream & operator<<(ostream & os, Complex & x)
 		float arg = x.argument();
 		if (x.re != 0 && x.im > 0) os << x.abs() << " * (Cos("  << arg / pi << "*pi) + i*Sin(" << arg / pi << "*pi))";
 		else if (x.re != 0 && x.im < 0) os << x.abs() << " * (Cos(" << abs(arg / pi) << "*pi) - i*Sin(" << abs(arg / pi) << "*pi))";
-		else if (x.re != 0) os << x.abs() << " * Cos(" << arg / pi << "*pi)";
+		else if (x.re != 0 && x.im == 0) os << x.abs() << " * Cos(" << arg / pi << "*pi)";
 		else os << x.abs() << "*i*Sin(" << arg / pi << "*pi)";
 		return os;
 	}

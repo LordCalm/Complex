@@ -10,7 +10,7 @@ const double pi = 3.1415926535897932384626433832795;
 class Complex {
 private:
 	type re, im;
-	int form; // 1 - стандарт, 2 - тригонометрическая форма, 3 - экспоненциальная
+	int form; // 1 - stand, 2 - trig, 3 -exp
 public:
 	Complex();
 	Complex(float re, float im = 0.0);

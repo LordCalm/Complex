@@ -2,10 +2,11 @@
 
 int main()
 {
-	Complex a, b(2.0), c(1.0, 1.0);
+	Complex a, b(2), c(1.0, 1.0);
 
 	cin >> a;
 	a.Exp();
+	b.Trig();
 	cout << a << ", " << b << ", abs: " << b.abs() << endl;
 
 	a = b + c.conj();
