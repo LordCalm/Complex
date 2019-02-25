@@ -19,7 +19,7 @@ public:
 
 	friend const bool operator== (const Complex & x, const Complex & y);
 	friend const bool operator!= (const Complex & x, const Complex & y);
-	friend ostream & operator<< (ostream & os, Complex & x);
+	friend ostream & operator<< (ostream & os, const Complex & x);
 	friend istream & operator>> (istream & os, Complex & x);
 	friend Complex operator+ (const Complex & x, const Complex & y);
 	friend Complex operator- (const Complex & x, const Complex & y);
@@ -30,10 +30,10 @@ public:
 	friend Complex operator*= (Complex & x, const Complex & y);
 	friend Complex operator/= (Complex & x, const Complex & y);
 
-	float abs();
-	float argument();
-	type imaginary();
-	type real();
+	float abs() const;
+	float argument() const;
+	type imaginary() const;
+	type real() const;
 	Complex conj();
 
 	void Stand();

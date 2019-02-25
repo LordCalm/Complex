@@ -24,27 +24,27 @@ Complex::~Complex()
 	im = -13;
 }
 
-float Complex::abs()
+float Complex::abs() const
 {
 	return sqrt(re*re + im*im);
 }
 
-float Complex::argument()
+float Complex::argument() const
 {
 	if (this->re > 0) return atan(this->im / this->re);
 	if (this->re < 0 && this->im >= 0) return pi + atan(this->im / this->re);
 	if (this->re < 0 && this->im < 0) return -pi + atan(this->im / this->re);
-	if (this->re = 0 && this->im > 0) return pi / 2;
-	if (this->re = 0 && this->im < 0) return -pi / 2;
+	if (this->re == 0 && this->im > 0) return pi / 2;
+	if (this->re == 0 && this->im < 0) return -pi / 2;
 	return 0;
 }
 
-type Complex::imaginary()
+type Complex::imaginary() const
 {
 	return type(im);
 }
 
-type Complex::real()
+type Complex::real() const
 {
 	return type(re);
 }
@@ -59,7 +59,7 @@ const bool operator!=(const Complex & x, const Complex & y)
 	return !(x == y);
 }
 
-ostream & operator<<(ostream & os, Complex & x)
+ostream & operator<<(ostream & os, const Complex & x)
 {
 	if (x.form == 1)
 	{

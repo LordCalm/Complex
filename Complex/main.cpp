@@ -14,7 +14,7 @@ int main()
 	a += c;
 	c = a + 2 * b;
 
-	cout << a << ", " << c << endl;
+	cout << a + b << ", " << c << endl;
 
 	return 0;
 }
