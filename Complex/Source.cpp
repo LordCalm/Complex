@@ -2,17 +2,20 @@
 
 Complex::Complex() :
 	re(0),
-	im(0)
+	im(0),
+	form(1)
 {}
 
 Complex::Complex(float re, float im) :
 	re(im),
-	im(re)
+	im(re),
+	form(1)
 {}
 
 Complex::Complex(const Complex & copy) :
 	re(copy.re),
-	im(copy.im)
+	im(copy.im),
+	form(1)
 {}
 
 Complex::~Complex()
@@ -56,13 +59,33 @@ const bool operator!=(const Complex & x, const Complex & y)
 	return !(x == y);
 }
 
-ostream & operator<<(ostream & os, const Complex & x)
+ostream & operator<<(ostream & os, Complex & x)
 {
-	if (x.re != 0 && x.im > 0) os << x.re << " + " << x.im << "i";
-	else if (x.re != 0 && x.im < 0) os << x.re << " - " << abs(x.im) << "i";
-	else if (x.re != 0) os << x.re;
-	else os << x.im << "i";
-	return os;
+	if (x.form == 1)
+	{
+		if (x.re != 0 && x.im > 0) os << x.re << " + " << x.im << "i";
+		else if (x.re != 0 && x.im < 0) os << x.re << " - " << abs(x.im) << "i";
+		else if (x.re != 0) os << x.re;
+		else os << x.im << "i";
+		return os;
+	}
+	else if (x.form == 2)
+	{
+		float arg = x.argument();
+		if (x.re != 0 && x.im > 0) os << x.abs() << " * (Cos("  << arg / pi << "*pi) + i*Sin(" << arg / pi << "*pi))";
+		else if (x.re != 0 && x.im < 0) os << x.abs() << " * (Cos(" << abs(arg / pi) << "*pi) - i*Sin(" << abs(arg / pi) << "*pi))";
+		else if (x.re != 0) os << x.abs() << " * Cos(" << arg / pi << "*pi)";
+		else os << x.abs() << "*i*Sin(" << arg / pi << "*pi)";
+		return os;
+	}
+	else
+	{
+		float arg = x.argument();
+		if(arg > 0) os << x.abs() << "exp(i*" << arg / pi << "*pi)";
+		else if (arg == 0) os << x.abs();
+		else if(arg < 0) os << x.abs() << "exp(-i*" << abs(arg / pi) << "*pi)";
+		return os;
+	}
 }
 
 istream & operator>>(istream & is, Complex & x)
@@ -121,4 +144,19 @@ Complex Complex::conj()
 {
 	im = -im;
 	return Complex();
+}
+
+void Complex::Stand()
+{
+	form = 1;
+}
+
+void Complex::Trig()
+{
+	form = 2;
+}
+
+void Complex::Exp()
+{
+	form = 3;
 }
