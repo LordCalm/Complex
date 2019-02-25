@@ -1,61 +1,62 @@
 #include "Header.h"
 
-complex::complex() :
+Complex::Complex() :
 	re(0),
 	im(0)
 {}
 
-complex::complex(float re, float im) :
+Complex::Complex(float re, float im) :
 	re(im),
 	im(re)
 {}
 
-complex::complex(const complex & copy) :
+Complex::Complex(const Complex & copy) :
 	re(copy.re),
 	im(copy.im)
 {}
 
-complex::~complex()
+Complex::~Complex()
 {
 	re = -13;
 	im = -13;
 }
 
-float complex::abs()
+float Complex::abs()
 {
 	return sqrt(re*re + im*im);
 }
 
-float complex::argument()
+float Complex::argument()
 {
 	if (this->re > 0) return atan(this->im / this->re);
 	if (this->re < 0 && this->im >= 0) return pi + atan(this->im / this->re);
 	if (this->re < 0 && this->im < 0) return -pi + atan(this->im / this->re);
 	if (this->re = 0 && this->im > 0) return pi / 2;
 	if (this->re = 0 && this->im < 0) return -pi / 2;
+	return 0;
 }
 
-type complex::imaginary()
+type Complex::imaginary()
 {
 	return type(im);
 }
 
-type complex::real()
+type Complex::real()
 {
 	return type(re);
 }
 
-const bool operator== (const complex & x, const complex & y)
+const bool operator== (const Complex & x, const Complex & y)
 {
 	return x.re == y.re && x.im == y.im;
 }
 
-const bool operator!=(const complex & x, const complex & y)
+const bool operator!=(const Complex & x, const Complex & y)
 {
 	return !(x == y);
 }
 
-ostream & operator<<(ostream & os, const complex & x)
+ostream & operator<<(ostream & os, const Complex & x)
 {
 	if (x.re != 0 && x.im > 0) os << x.re << " + " << x.im << "i";
 	else if (x.re != 0 && x.im < 0) os << x.re << " - " << abs(x.im) << "i";
@@ -64,7 +65,7 @@ ostream & operator<<(ostream & os, const complex & x)
 	return os;
 }
 
-istream & operator>>(istream & is, complex & x)
+istream & operator>>(istream & is, Complex & x)
 {
 	fflush(stdin);
 	cout << "Real: ";
@@ -76,48 +77,48 @@ istream & operator>>(istream & is, complex & x)
 	return is;
 }
 
-complex operator+(const complex & x, const complex & y)
+Complex operator+(const Complex & x, const Complex & y)
 {
-	return complex(x.re + y.re, x.im + y.im);
+	return Complex(x.re + y.re, x.im + y.im);
 }
 
-complex operator-(const complex & x, const complex & y)
+Complex operator-(const Complex & x, const Complex & y)
 {
-	return complex(x.re - y.re, x.im - y.im);
+	return Complex(x.re - y.re, x.im - y.im);
 }
 
-complex operator*(const complex & x, const complex & y)
+Complex operator*(const Complex & x, const Complex & y)
 {
-	return complex(x.re*y.re - x.im*y.im, x.re*y.im + x.im*y.re);
+	return Complex(x.re*y.re - x.im*y.im, x.re*y.im + x.im*y.re);
 }
 
-complex operator/(const complex & x, const complex & y)
+Complex operator/(const Complex & x, const Complex & y)
 {
-	return complex((x.re*y.re + x.im*y.im) / (y.re*y.re + y.im*y.im), (x.im*y.re - x.re*y.im) / (y.re*y.re + y.im*y.im));
+	return Complex((x.re*y.re + x.im*y.im) / (y.re*y.re + y.im*y.im), (x.im*y.re - x.re*y.im) / (y.re*y.re + y.im*y.im));
 }
 
-complex operator+=(complex & x, const complex & y)
+Complex operator+=(Complex & x, const Complex & y)
 {
-	return complex(x + y);
+	return Complex(x + y);
 }
 
-complex operator-=(complex & x, const complex & y)
+Complex operator-=(Complex & x, const Complex & y)
 {
-	return complex(x - y);
+	return Complex(x - y);
 }
 
-complex operator*=(complex & x, const complex & y)
+Complex operator*=(Complex & x, const Complex & y)
 {
-	return complex(x * y);
+	return Complex(x * y);
 }
 
-complex operator/=(complex & x, const complex & y)
+Complex operator/=(Complex & x, const Complex & y)
 {
-	return complex(x / y);
+	return Complex(x / y);
 }
 
-complex complex::conj()
+Complex Complex::conj()
 {
 	im = -im;
-	return complex();
+	return Complex();
 }

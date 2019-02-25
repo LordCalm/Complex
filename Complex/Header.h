@@ -7,32 +7,32 @@ typedef float type;
 
 const double pi = 3.1415926535897932384626433832795;
 
-class complex {
+class Complex {
 private:
 	type re, im;
 public:
-	complex();
-	complex(float re, float im = 0.0);
-	complex(const complex &copy);
-	~complex();
+	Complex();
+	Complex(float re, float im = 0.0);
+	Complex(const Complex &copy);
+	~Complex();
 
-	friend const bool operator== (const complex & x, const complex & y);
-	friend const bool operator!= (const complex & x, const complex & y);
-	friend ostream & operator<< (ostream & os, const complex & x);
-	friend istream & operator>> (istream & os, complex & x);
-	friend complex operator+ (const complex & x, const complex & y);
-	friend complex operator- (const complex & x, const complex & y);
-	friend complex operator* (const complex & x, const complex & y);
-	friend complex operator/ (const complex & x, const complex & y);
-	friend complex operator+= (complex & x, const complex & y);
-	friend complex operator-= (complex & x, const complex & y);
-	friend complex operator*= (complex & x, const complex & y);
-	friend complex operator/= (complex & x, const complex & y);
+	friend const bool operator== (const Complex & x, const Complex & y);
+	friend const bool operator!= (const Complex & x, const Complex & y);
+	friend ostream & operator<< (ostream & os, const Complex & x);
+	friend istream & operator>> (istream & os, Complex & x);
+	friend Complex operator+ (const Complex & x, const Complex & y);
+	friend Complex operator- (const Complex & x, const Complex & y);
+	friend Complex operator* (const Complex & x, const Complex & y);
+	friend Complex operator/ (const Complex & x, const Complex & y);
+	friend Complex operator+= (Complex & x, const Complex & y);
+	friend Complex operator-= (Complex & x, const Complex & y);
+	friend Complex operator*= (Complex & x, const Complex & y);
+	friend Complex operator/= (Complex & x, const Complex & y);
 
 	float abs();
 	float argument();
 	type imaginary();
 	type real();
-	complex conj();
+	Complex conj();
 
 };
